@@ -19,4 +19,5 @@ class TestMainPage:
             (7, data.question_8_answer_text)
         ])
     def test_valid_answers_to_question_in_how_it_works_section(self, driver, num, answer_text):
-        assert MainPage(driver).get_answer_text(num) == answer_text
+        main_page = MainPage(driver)
+        assert main_page.get_answer_text(num) == answer_text

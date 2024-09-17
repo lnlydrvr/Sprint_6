@@ -15,16 +15,18 @@ class TestOrderPage:
         ])
     
     def test_make_order_from_header(self, driver, user_info, rent_info):
-        MainPage(driver).open_user_info_form_by_header_button()
+        main_page = MainPage(driver)
+        main_page.open_user_info_form_by_header_button()
 
-        OrderPage(driver).wait_user_info_form()
-        OrderPage(driver).fill_user_info_form(user_info)
-        assert OrderPage(driver).get_rent_info_header().text == data.order_form_rent_info_header_text
+        order_page = OrderPage(driver)
+        order_page.wait_user_info_form()
+        order_page.fill_user_info_form(user_info)
+        assert order_page.get_rent_info_header().text == data.order_form_rent_info_header_text
 
-        OrderPage(driver).fill_rent_info_form(rent_info)
-        OrderPage(driver).click_order_finish_button()
-        OrderPage(driver).confirm_rent()
-        assert data.order_form_finish_header_text in OrderPage(driver).get_order_info_header().text
+        order_page.fill_rent_info_form(rent_info)
+        order_page.click_order_finish_button()
+        order_page.confirm_rent()
+        assert data.order_form_finish_header_text in order_page.get_order_info_header().text
 
     @allure.title('Создание заказа через кнопку "Заказать" после секции "Как это работает"')
     @pytest.mark.parametrize('user_info, rent_info',
@@ -34,13 +36,15 @@ class TestOrderPage:
         ])
     
     def test_make_order_from_how_it_works_section(self, driver, user_info, rent_info):
-        MainPage(driver).open_user_info_form_by_content_button()
+        main_page = MainPage(driver)
+        main_page.open_user_info_form_by_content_button()
         
-        OrderPage(driver).wait_user_info_form()
-        OrderPage(driver).fill_user_info_form(user_info)
-        assert OrderPage(driver).get_rent_info_header().text == data.order_form_rent_info_header_text
+        order_page = OrderPage(driver)
+        order_page.wait_user_info_form()
+        order_page.fill_user_info_form(user_info)
+        assert order_page.get_rent_info_header().text == data.order_form_rent_info_header_text
 
-        OrderPage(driver).fill_rent_info_form(rent_info)
-        OrderPage(driver).click_order_finish_button()
-        OrderPage(driver).confirm_rent()
-        assert data.order_form_finish_header_text in OrderPage(driver).get_order_info_header().text
+        order_page.fill_rent_info_form(rent_info)
+        order_page.click_order_finish_button()
+        order_page.confirm_rent()
+        assert data.order_form_finish_header_text in order_page.get_order_info_header().text

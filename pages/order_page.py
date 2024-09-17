@@ -1,8 +1,8 @@
 import allure
 import locators.order_page_locators as locators
-from pages.default_page import DefaultPage
+from pages.base_page import BasePage
 
-class OrderPage(DefaultPage):
+class OrderPage(BasePage):
 
     @allure.step('Ожидание появления формы "Для кого самокат"')
     def wait_user_info_form(self):

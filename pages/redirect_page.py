@@ -1,9 +1,9 @@
 import allure
 import locators.redirect_page_locators as locators
-from pages.default_page import DefaultPage
+from pages.base_page import BasePage
 
 
-class RedirectPage(DefaultPage):
+class RedirectPage(BasePage):
 
     @allure.step('Переходим на главную страницу через логотип "Самокат"')
     def go_to_main_page_by_scooter_logo(self):
